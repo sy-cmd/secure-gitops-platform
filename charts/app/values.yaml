@@ -1,0 +1,34 @@
+replicaCount: 2
+
+image:
+  repository: ghcr.io/sy-cmd/secure-gitops-platform
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
+# Requests = what the scheduler reserves; limits = the hard ceiling.
+# Small on purpose — this app does almost nothing.
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 250m
+    memory: 128Mi
+
+# Database connection. The password here is a PHASE-2 PLACEHOLDER stored in a
+# Kubernetes Secret. In Phase 4, Vault injects short-lived credentials and this
+# whole block (and the Secret) goes away.
+database:
+  host: postgres
+  port: "5432"
+  name: appdb
+  user: postgres
+  password: postgres
+
+networkPolicy:
+  enabled: true
