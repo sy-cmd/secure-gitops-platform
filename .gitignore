@@ -6,3 +6,6 @@ __pycache__/
 venv/
 *.egg-info/
 .env
+
+# Local-only 
+PHASE*-GUIDE.md
