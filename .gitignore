@@ -9,3 +9,6 @@ venv/
 
 # Local-only 
 PHASE*-GUIDE.md
+
+# kept local until the final documented version is written
+README.md
