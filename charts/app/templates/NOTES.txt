@@ -1,0 +1,6 @@
+App deployed. Reach it with:
+
+  kubectl port-forward svc/{{ include "app.fullname" . }} 8000:{{ .Values.service.port }} -n {{ .Release.Namespace }}
+  curl localhost:8000/healthz
+  curl localhost:8000/readyz
+  curl localhost:8000/items

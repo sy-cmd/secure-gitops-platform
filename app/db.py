@@ -29,7 +29,7 @@ def _conninfo() -> str:
 def ping() -> bool:
     """Return True if the database answers a trivial query."""
     try:
-        with psycopg.connect(_conninfo(), connect_timeout=3) as conn:
+        with psycopg.connect(_conninfo(), connect_timeout=0.5) as conn:
             with conn.cursor() as cur:
                 cur.execute("SELECT 1")
                 cur.fetchone()
